@@ -1,3 +1,41 @@
-<h1>First App Angular</h1>
-<app-navbar></app-navbar>
-<app-header></app-header>
+<!-- Old way -->
+<!-- <h2 *ngIf="isLogged; else message">{{ userName }}</h2>
+
+<h4 *ngIf="!isLogged">User is not logged in</h4>
+
+<ng-template #message>
+  <h4>User is not logged in message</h4>
+</ng-template> -->
+
+<!-- New way -->
+<!-- @if(isLogged){
+<h3>{{ userName }}</h3>
+} @else {
+<h3>User is not logged in</h3>
+} -->
+
+<!-- Multiple condition -->
+<!-- <h4 *ngIf="isAdmin; else memberMessage">Welcom Admin</h4>
+
+<ng-template #memberMessage>
+  <h4 *ngIf="isMember; else guestMessage">Welcom Member</h4>
+</ng-template>
+
+<ng-template #guestMessage>
+  <h4 *ngIf="isGuest">Welcom Guest</h4>
+</ng-template> -->
+
+<!-- If directive with Number values -->
+<!-- <button (click)="countLoginAttempts()">Log in</button>
+<h4 *ngIf="loginCount > 3">Exceeded 3 login Attempts, Try Again</h4> -->
+
+<!-- <ng-template #callToAction>
+  <p>Call to action</p>
+  <button>Join now</button>
+</ng-template>
+
+<div [ngTemplateOutlet]="callToAction"><h5>Sidebar</h5></div>
+<div [ngTemplateOutlet]="callToAction"><h5>Hero</h5></div>
+<div [ngTemplateOutlet]="callToAction"><h5>Footer</h5></div> -->
+
+<h3 *ngFor="let user of users">{{ user }}</h3>

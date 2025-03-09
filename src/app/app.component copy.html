@@ -1,0 +1,40 @@
+<h1>First App Angular</h1>
+<h2>{{ title }}</h2>
+<app-navbar></app-navbar>
+<app-header></app-header>
+<img [src]="image" alt="" />
+<img src="{{ image }}" alt="" />
+<button disabled="{{ isDisabled }}">Disable Button String Interpolation</button>
+<button [disabled]="isDisabled">Disable Button Property Binding</button>
+
+<!-- Class Binding -->
+<!-- <button
+  [class.active]="isActive"
+  [class.no-active]="!isActive"
+  [class.active-border]="isActive"
+  [class.no-active-border]="!isActive"
+>
+  Click Me
+</button>
+
+<button [class.apple]="fruitName == 'Apple'">Fruit Ninja</button> -->
+
+<!-- Style binding -->
+<!-- <button [style.background]="isActive ? 'red' : 'green'">Click</button> -->
+
+<!-- Even Binding -->
+<!-- <button (mouseover)="buttonClick()">Click me</button>
+<input type="text" (keyup)="keyEnter($event)" /> -->
+
+<!-- <input type="text" (keyup.enter)="keyUpFiltering(user)" #user id="userInput" /> -->
+
+<!-- Two way data binding -->
+<!-- <input
+  type="text"
+  [value]="userName"
+  #username
+  (keyup.enter)="updateUsername(username)"
+/> -->
+
+<input type="text" [(ngModel)]="userName" />
+<h3>{{ userName }}</h3>
