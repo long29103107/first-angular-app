@@ -1,30 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppNavbar } from "./navbar/navbar.component";
+import { AppNavbar } from './navbar/navbar.component';
 import { AppHeader } from './header/header.component';
-import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { PostsListComponent } from './posts-list/posts-list.component';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppNavbar, AppHeader, FormsModule, NgIf, NgFor, NgTemplateOutlet],
+  imports: [
+    RouterOutlet,
+    AppNavbar,
+    AppHeader,
+    PostsListComponent,
+    CardComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
+export class AppComponent implements AfterViewInit {
+  appPostTitle: string = 'Post 1';
+  appIsLogin: boolean = false;
+  message: string = '';
+  messageFromChild: string = '';
+  @ViewChild(PostsListComponent) childMessage: any;
+  /**
+   *
+   */
+  constructor() {
+    console.log(this.childMessage);
+  }
 
-export class AppComponent {
-  // isLogged:boolean = false;
-  // userName:string = 'John Doe';
-  // isAdmin: boolean = false;
-  // isMember: boolean = false;
-  // isGuest: boolean = true;
-  // loginCount: number = 0;
-  
-  // countLoginAttempts = () => {
-  //   this.loginCount++;
-  //   console.log(this.loginCount)
-  // }
+  ngAfterViewInit(): void {
+    this.message = this.childMessage.childMessage;
+  }
 
-  users: Array<string> = ['John', 'Sam', 'Smith']
+  receiveMessage = (message: string) => {
+    this.messageFromChild = message;
+  };
 }
